@@ -1,0 +1,87 @@
+0:
+  name : "Protagonist Room"
+  description: 
+    The closet sized enclosure, indefinitly smelling of garlic, appears largly barren. Surely the habitat of some bland snow bird egrete wallowing away its 100 years on earth in a meloncholoy silence looking out on the dusty ends of the world. Little fixtures pervade here, a sad looking desk akin to those found cheapest at Staples, stout and dysfunctional, a windowsill with pictures – various plump pill bottles forest green with yellow lables, nutrional concoctions. Towards the door leading into the hallway there is a refrigerator and sink. Across from those amenities, surely only afforded to the most affluent university students, a private bath, pithly arranged for compact catacombness, luxery subsumes the pupil of passers. The closet lacks a closet and its owners belongings rest upon wall mounted shelving and hangers. 
+  plotID : 0
+  fixtures:
+    window:
+      description: 
+        standard: A window of the standard variety, quite see through.{ On its sill rest an empty bottle of sorts and my torn wallet.}[0,1]{ On its sill rest an empty bottle.}[0]{ On its sill rest my torn wallet.}[1]
+      interactions:
+        open: 
+          standard: 
+            text: The window slides open like butter on a rusty nail.
+            updateState: open
+          open: 
+            text: The window is already open.
+          
+        shut: 
+          standard: 
+            text: The window is already shut.
+          open: 
+            text: The window refuses to shut.
+        close: 
+          standard: 
+            text: The window is already shut.
+          open: 
+            text: The window refuses to shut.
+        jump:
+          standard: 
+            text: Can't do that.
+          open: 
+            text: You've not quite grown wings yet.
+    shelves:
+      description:
+        standard:
+          A messy array of clothing is folded inelegantly without due attention on the cheap laminated wood shelves. {Amidst various other sundry, haberdasheric and not lie the keys where they were left. Truly miraculous.}[2] 
+    clothes:
+      description: 
+        standard : A wonderful variety of plaid, the owner of these fabrics must be a thoughtful dresser, or a lumberjack.
+        clothesMoved: "The now messyer remains of your violent outbreak have laid bare the shelve in an area. {In that place there lays a knife.}[3]"
+      interactions:
+        look under:
+          standard: 
+            text: "Violently tossing the monotony aside reveals a knife."
+            updateState: clothesMoved
+            revealItem: ["knife"]
+          clothesMoved:
+              text: "You already moved the clothes."
+        alternatives:
+          look under : ['pick up', 'move']
+  items:
+    bottle:
+      name : Chamomile Bottle
+      id : 0
+      description: 
+        "The slimy remains of an Old Rasputin Russian Imerpial Stout
+        Lager bottle: looks to be abandoned with little regard. An
+        amount of chamomile tea slinks at its bottom. Sleepy brine sewage."
+      added: The bottle was added to your inventory.
+      use:
+        standard:
+          text: The putrid gelitin eeks your nostrils going down, the means to which we go just to escape states of mind. 
+        alternatives : ['drink']
+    wallet:
+      name: My Wallet
+      id : 1
+      description:
+        standard:
+          The tawy remains of what is my daily wallet.
+      added: The wallet was added to your inventory.
+    keys:
+      name: My Keyring
+      id : 2
+      description:
+        standard:
+          A metal ring from which my car keys and apartment keys are contained. 
+      added: The keyring was added to your inventory.
+    knife :
+      id : 3
+      name : A Pocket Knife
+      description: 
+        standard: 
+          A cheap souvenir you bought in Costa Rica – enscribed on the side are the words 'Pura Vida'.
+      added: The pocket knife was added to your inventory.
+      hidden : true
+
+
